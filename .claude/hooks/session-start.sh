@@ -12,6 +12,11 @@ if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
   exit 0
 fi
 
+# Run async: session becomes interactive immediately while Flutter installs in
+# the background. Pre-PR checks (analyze, test) will wait on this naturally
+# once they invoke `flutter`.
+echo '{"async": true, "asyncTimeout": 300000}'
+
 FLUTTER_DIR="${HOME}/flutter"
 FLUTTER_BIN="${FLUTTER_DIR}/bin"
 
