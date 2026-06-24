@@ -33,6 +33,9 @@ Target machine: Windows 10/11 PC. Produces `app-release.apk` you can sideload on
 - [ ] `flutter analyze` — should report no issues
 - [ ] `flutter test` — all widget tests should pass
 
+## Build folders
+- flutter create --platforms=android,ios --org com.rocketlab --project-name tourbuddy .
+
 ## 5. Build the release APK
 
 - [ ] `flutter build apk --release`
