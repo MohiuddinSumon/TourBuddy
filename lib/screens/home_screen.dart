@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../models/travel_guide.dart';
 import '../services/guide_service.dart';
 import 'result_screen.dart';
 
