@@ -42,7 +42,7 @@ class ResultScreen extends StatelessWidget {
             icon: Icons.attractions,
             color: const Color(0xFF2563EB),
             title: 'Things to Do',
-            items: guide.thingsToDo,
+            items: guide.topThingsToDo,
           ),
           _SectionCard(
             icon: Icons.warning_amber_rounded,
@@ -78,7 +78,7 @@ class _SectionCard extends StatelessWidget {
   final IconData icon;
   final Color color;
   final String title;
-  final List<String> items;
+  final List<GuideItem> items;
 
   const _SectionCard({
     required this.icon,
@@ -125,7 +125,7 @@ class _SectionCard extends StatelessWidget {
             const SizedBox(height: 12),
             ...items.map(
               (item) => Padding(
-                padding: const EdgeInsets.only(bottom: 8),
+                padding: const EdgeInsets.only(bottom: 12),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -141,13 +141,30 @@ class _SectionCard extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Text(
-                        item,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          height: 1.4,
-                          color: Color(0xFF374151),
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            item.title,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              height: 1.3,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF111827),
+                            ),
+                          ),
+                          if (item.description.isNotEmpty) ...[
+                            const SizedBox(height: 2),
+                            Text(
+                              item.description,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                height: 1.4,
+                                color: Color(0xFF4B5563),
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                     ),
                   ],
